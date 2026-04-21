@@ -100,11 +100,66 @@
           </form>
           <ul id="cert-list" class="list"></ul>
         </article>
+      <h1>DevLaunch Teams</h1>
+      <p>Career accelerator MVP for junior Unity/Android developers</p>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>Cohorts & Teams</h2>
+        <form id="team-form" class="stack">
+          <input id="cohort" placeholder="Cohort name (e.g., Spring 2026)" required />
+          <input id="team" placeholder="Team name" required />
+          <input id="members" placeholder="Members (comma separated, up to 5)" required />
+          <button type="submit">Add Team</button>
+        </form>
+        <ul id="team-list" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Projects & Tasks</h2>
+        <form id="task-form" class="stack">
+          <input id="project" placeholder="Project name" required />
+          <input id="task" placeholder="Task title" required />
+          <select id="difficulty">
+            <option value="C">Level C (Foundational)</option>
+            <option value="B">Level B (Intermediate)</option>
+            <option value="A">Level A (Advanced)</option>
+          </select>
+          <input id="assignee" placeholder="Assignee name" required />
+          <button type="submit">Create Task</button>
+        </form>
+        <div class="kanban">
+          <div>
+            <h3>To Do</h3>
+            <ul id="todo" class="list"></ul>
+          </div>
+          <div>
+            <h3>In Progress</h3>
+            <ul id="in-progress" class="list"></ul>
+          </div>
+          <div>
+            <h3>Done</h3>
+            <ul id="done" class="list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Certificates</h2>
+        <form id="cert-form" class="stack">
+          <input id="cert-name" placeholder="Developer name" required />
+          <input id="cert-track" placeholder="Track (Unity/Android)" required />
+          <input id="cert-partner" placeholder="Company partner" required />
+          <button type="submit">Issue Certificate</button>
+        </form>
+        <ul id="cert-list" class="list"></ul>
       </section>
     </main>
 
     <footer>
       <small>Data is stored in localStorage for MVP validation.</small>
+      <small>MVP prototype. Data is saved in your browser localStorage.</small>
     </footer>
 
     <script src="app.js"></script>

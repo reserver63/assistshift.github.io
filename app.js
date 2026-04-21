@@ -61,6 +61,22 @@ const demoPayload = {
 
 const messageEl = document.getElementById('message');
 
+const store = {
+  read(key, fallback = []) {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  },
+  write(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+  },
+};
+
+const state = {
+  teams: store.read('teams'),
+  tasks: store.read('tasks'),
+  certs: store.read('certs'),
+};
+
 const teamForm = document.getElementById('team-form');
 const taskForm = document.getElementById('task-form');
 const certForm = document.getElementById('cert-form');
@@ -141,6 +157,7 @@ function renderTeams() {
         <button class="secondary" data-action="delete-team" data-id="${team.id}">Delete</button>
       </div>
     `;
+    li.innerHTML = `<strong>${team.team}</strong><small>${team.cohort}</small><small>${team.members.join(', ')}</small>`;
     teamList.appendChild(li);
   });
 }
@@ -160,6 +177,14 @@ function taskActionButtons(task) {
 function statusMatch(task) {
   const activeFilter = taskFilterStatus.value;
   return activeFilter === 'all' || activeFilter === task.status;
+function taskControls(task) {
+  if (task.status === 'todo') {
+    return `<button data-action="start" data-id="${task.id}">Start</button>`;
+  }
+  if (task.status === 'in-progress') {
+    return `<button data-action="done" data-id="${task.id}">Mark Done</button>`;
+  }
+  return `<small>Completed</small>`;
 }
 
 function renderTasks() {
@@ -178,6 +203,10 @@ function renderTasks() {
         <button class="secondary" data-action="delete-task" data-id="${task.id}">Delete</button>
       </div>
     `;
+  state.tasks.forEach((task) => {
+    const li = document.createElement('li');
+    li.className = 'item';
+    li.innerHTML = `<strong>${task.title}</strong><small>${task.project} · Level ${task.difficulty} · ${task.assignee}</small>${taskControls(task)}`;
 
     if (task.status === 'todo') todoList.appendChild(li);
     if (task.status === 'in-progress') inProgressList.appendChild(li);
@@ -203,6 +232,12 @@ function renderCertificates() {
         <button class="secondary" data-action="delete-cert" data-id="${cert.id}">Delete</button>
       </div>
     `;
+function renderCerts() {
+  certList.innerHTML = '';
+  state.certs.forEach((cert) => {
+    const li = document.createElement('li');
+    li.className = 'item';
+    li.innerHTML = `<strong>${cert.name}</strong><small>${cert.track} · Verified by ${cert.partner}</small><small>ID: ${cert.id}</small>`;
     certList.appendChild(li);
   });
 }
@@ -232,6 +267,21 @@ teamForm.addEventListener('submit', (event) => {
   renderAll();
   teamForm.reset();
   notify(`Team "${name}" was added.`);
+teamForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const cohort = document.getElementById('cohort').value.trim();
+  const team = document.getElementById('team').value.trim();
+  const members = document
+    .getElementById('members')
+    .value.split(',')
+    .map((name) => name.trim())
+    .filter(Boolean)
+    .slice(0, 5);
+
+  state.teams.push({ cohort, team, members });
+  store.write('teams', state.teams);
+  renderTeams();
+  teamForm.reset();
 });
 
 taskForm.addEventListener('submit', (event) => {
@@ -249,6 +299,8 @@ taskForm.addEventListener('submit', (event) => {
 
   state.tasks.push({
     id: id(),
+  state.tasks.push({
+    id: crypto.randomUUID(),
     project,
     title,
     difficulty,
@@ -260,6 +312,9 @@ taskForm.addEventListener('submit', (event) => {
   renderAll();
   taskForm.reset();
   notify(`Task "${title}" was created.`);
+  store.write('tasks', state.tasks);
+  renderTasks();
+  taskForm.reset();
 });
 
 certForm.addEventListener('submit', (event) => {
@@ -303,6 +358,16 @@ resetBtn.addEventListener('click', () => {
   persist();
   renderAll();
   notify('All data has been reset.');
+  state.certs.push({
+    id: crypto.randomUUID().slice(0, 8).toUpperCase(),
+    name,
+    track,
+    partner,
+  });
+
+  store.write('certs', state.certs);
+  renderCerts();
+  certForm.reset();
 });
 
 document.body.addEventListener('click', (event) => {
@@ -356,3 +421,23 @@ document.body.addEventListener('click', (event) => {
 
 renderAll();
 notify('Ready. Start by adding a team or loading demo data.');
+  if (!(target instanceof HTMLButtonElement)) return;
+
+  const id = target.dataset.id;
+  const action = target.dataset.action;
+  if (!id || !action) return;
+
+  state.tasks = state.tasks.map((task) => {
+    if (task.id !== id) return task;
+    if (action === 'start') return { ...task, status: 'in-progress' };
+    if (action === 'done') return { ...task, status: 'done' };
+    return task;
+  });
+
+  store.write('tasks', state.tasks);
+  renderTasks();
+});
+
+renderTeams();
+renderTasks();
+renderCerts();
