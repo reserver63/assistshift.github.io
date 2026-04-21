@@ -27,6 +27,7 @@
         <article class="metric"><h2 id="certs-count">0</h2><p>Certificates</p></article>
       </section>
 
+
       <p id="message" class="message" role="status" aria-live="polite"></p>
 
       <section class="layout">
@@ -41,6 +42,10 @@
             <label for="members">Members (comma separated, max 5)</label>
             <input id="members" placeholder="Aylin, David, Mina" autocomplete="off" required />
             <label for="team-track">Track</label>
+          <form id="team-form" class="stack">
+            <input id="cohort" placeholder="Cohort name (Spring 2026)" required />
+            <input id="team" placeholder="Team name" required />
+            <input id="members" placeholder="Members (comma separated, max 5)" required />
             <select id="team-track" required>
               <option value="">Select track</option>
               <option value="Unity">Unity</option>
@@ -68,6 +73,9 @@
             <label for="task">Task title</label>
             <input id="task" placeholder="Implement player movement controller" autocomplete="off" required />
             <label for="difficulty">Difficulty level</label>
+          <form id="task-form" class="stack">
+            <input id="project" placeholder="Project name" required />
+            <input id="task" placeholder="Task title" required />
             <select id="difficulty" required>
               <option value="C">Level C (Foundational)</option>
               <option value="B">Level B (Intermediate)</option>
@@ -75,6 +83,7 @@
             </select>
             <label for="assignee">Assignee</label>
             <input id="assignee" placeholder="Aylin" autocomplete="off" required />
+            <input id="assignee" placeholder="Assignee name" required />
             <button type="submit">Create Task</button>
           </form>
 
@@ -115,15 +124,74 @@
             </select>
             <label for="cert-partner">Company partner</label>
             <input id="cert-partner" placeholder="Nova Studios" autocomplete="off" required />
+          <form id="cert-form" class="stack">
+            <input id="cert-name" placeholder="Developer name" required />
+            <input id="cert-track" placeholder="Track (Unity/Android)" required />
+            <input id="cert-partner" placeholder="Company partner" required />
             <button type="submit">Issue Certificate</button>
           </form>
           <ul id="cert-list" class="list"></ul>
         </article>
+      <h1>DevLaunch Teams</h1>
+      <p>Career accelerator MVP for junior Unity/Android developers</p>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>Cohorts & Teams</h2>
+        <form id="team-form" class="stack">
+          <input id="cohort" placeholder="Cohort name (e.g., Spring 2026)" required />
+          <input id="team" placeholder="Team name" required />
+          <input id="members" placeholder="Members (comma separated, up to 5)" required />
+          <button type="submit">Add Team</button>
+        </form>
+        <ul id="team-list" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Projects & Tasks</h2>
+        <form id="task-form" class="stack">
+          <input id="project" placeholder="Project name" required />
+          <input id="task" placeholder="Task title" required />
+          <select id="difficulty">
+            <option value="C">Level C (Foundational)</option>
+            <option value="B">Level B (Intermediate)</option>
+            <option value="A">Level A (Advanced)</option>
+          </select>
+          <input id="assignee" placeholder="Assignee name" required />
+          <button type="submit">Create Task</button>
+        </form>
+        <div class="kanban">
+          <div>
+            <h3>To Do</h3>
+            <ul id="todo" class="list"></ul>
+          </div>
+          <div>
+            <h3>In Progress</h3>
+            <ul id="in-progress" class="list"></ul>
+          </div>
+          <div>
+            <h3>Done</h3>
+            <ul id="done" class="list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Certificates</h2>
+        <form id="cert-form" class="stack">
+          <input id="cert-name" placeholder="Developer name" required />
+          <input id="cert-track" placeholder="Track (Unity/Android)" required />
+          <input id="cert-partner" placeholder="Company partner" required />
+          <button type="submit">Issue Certificate</button>
+        </form>
+        <ul id="cert-list" class="list"></ul>
       </section>
     </main>
 
     <footer>
       <small>Data is stored in localStorage for MVP validation.</small>
+      <small>MVP prototype. Data is saved in your browser localStorage.</small>
     </footer>
 
     <script src="app.js"></script>
