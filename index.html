@@ -11,6 +11,7 @@
       <div>
         <h1>DevLaunch Teams</h1>
         <p>Career accelerator workspace for junior Unity and Android developers.</p>
+        <small class="topbar-tip">Tip: Use "Load Demo Data" to explore the workflow instantly.</small>
       </div>
       <div class="toolbar">
         <button id="seed-btn" type="button">Load Demo Data</button>
@@ -26,25 +27,21 @@
         <article class="metric"><h2 id="certs-count">0</h2><p>Certificates</p></article>
       </section>
 
-      <section class="card features-card" aria-label="Feature checklist">
-        <h3>Included in this MVP</h3>
-        <ul class="feature-list">
-          <li>Cohort/team creation with track selection (Unity/Android) and team-size validation.</li>
-          <li>Task management with a kanban flow: To Do → In Progress → Done.</li>
-          <li>Task status filter and delete actions.</li>
-          <li>Certificate issuance with track filter and delete actions.</li>
-          <li>Automatic sorting of teams, tasks, and certificates for cleaner page organization.</li>
-          <li>KPI metrics cards (teams, tasks, completed tasks, certificates).</li>
-          <li>Demo data loader and one-click reset.</li>
-          <li>User-facing status messages for successful and invalid actions.</li>
-        </ul>
-      </section>
 
       <p id="message" class="message" role="status" aria-live="polite"></p>
 
       <section class="layout">
         <article class="card">
           <h3>Cohorts & Teams</h3>
+          <p class="section-help">Create small teams and assign each to a learning track.</p>
+          <form id="team-form" class="stack">
+            <label for="cohort">Cohort name</label>
+            <input id="cohort" placeholder="Spring 2026" autocomplete="off" required />
+            <label for="team">Team name</label>
+            <input id="team" placeholder="Rocket Pixels" autocomplete="off" required />
+            <label for="members">Members (comma separated, max 5)</label>
+            <input id="members" placeholder="Aylin, David, Mina" autocomplete="off" required />
+            <label for="team-track">Track</label>
           <form id="team-form" class="stack">
             <input id="cohort" placeholder="Cohort name (Spring 2026)" required />
             <input id="team" placeholder="Team name" required />
@@ -69,6 +66,13 @@
               <option value="done">Done</option>
             </select>
           </div>
+          <p class="section-help">Track each task from backlog to completion.</p>
+          <form id="task-form" class="stack">
+            <label for="project">Project name</label>
+            <input id="project" placeholder="Space Miner" autocomplete="off" required />
+            <label for="task">Task title</label>
+            <input id="task" placeholder="Implement player movement controller" autocomplete="off" required />
+            <label for="difficulty">Difficulty level</label>
           <form id="task-form" class="stack">
             <input id="project" placeholder="Project name" required />
             <input id="task" placeholder="Task title" required />
@@ -77,6 +81,8 @@
               <option value="B">Level B (Intermediate)</option>
               <option value="A">Level A (Advanced)</option>
             </select>
+            <label for="assignee">Assignee</label>
+            <input id="assignee" placeholder="Aylin" autocomplete="off" required />
             <input id="assignee" placeholder="Assignee name" required />
             <button type="submit">Create Task</button>
           </form>
@@ -106,6 +112,18 @@
               <option value="Android">Android</option>
             </select>
           </div>
+          <p class="section-help">Issue completion certificates for job-ready participants.</p>
+          <form id="cert-form" class="stack">
+            <label for="cert-name">Developer name</label>
+            <input id="cert-name" placeholder="Mina" autocomplete="off" required />
+            <label for="cert-track">Track</label>
+            <select id="cert-track" required>
+              <option value="">Select track</option>
+              <option value="Unity">Unity</option>
+              <option value="Android">Android</option>
+            </select>
+            <label for="cert-partner">Company partner</label>
+            <input id="cert-partner" placeholder="Nova Studios" autocomplete="off" required />
           <form id="cert-form" class="stack">
             <input id="cert-name" placeholder="Developer name" required />
             <input id="cert-track" placeholder="Track (Unity/Android)" required />

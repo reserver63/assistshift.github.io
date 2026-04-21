@@ -11,6 +11,7 @@ Improved static MVP for a junior-developer accelerator platform.
 - Automatic sorting of teams, tasks, and certificates for cleaner page organization.
 - KPI metrics cards (teams, tasks, completed tasks, certificates).
 - Demo data loader and one-click reset.
+- User-friendly UX improvements: labels, helper text, empty states, and reset confirmation.
 - User-facing status messages for successful and invalid actions.
 
 ## Run locally

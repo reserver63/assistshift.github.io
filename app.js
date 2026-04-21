@@ -164,6 +164,15 @@ function renderTeams() {
         <button class="secondary" data-action="delete-team" data-id="${team.id}">Delete</button>
       </div>
     `;
+    teamList.appendChild(li);
+  });
+
+  if (sortedTeams.length === 0) {
+    const li = document.createElement('li');
+    li.className = 'item empty';
+    li.textContent = 'No teams yet. Add your first team to begin.';
+    teamList.appendChild(li);
+  }
     li.innerHTML = `<strong>${team.team}</strong><small>${team.cohort}</small><small>${team.members.join(', ')}</small>`;
     teamList.appendChild(li);
   });
@@ -233,6 +242,27 @@ function renderTasks() {
     if (task.status === 'in-progress') inProgressList.appendChild(li);
     if (task.status === 'done') doneList.appendChild(li);
   });
+
+  if (todoList.children.length === 0) {
+    const li = document.createElement('li');
+    li.className = 'item empty';
+    li.textContent = 'No tasks in To Do.';
+    todoList.appendChild(li);
+  }
+
+  if (inProgressList.children.length === 0) {
+    const li = document.createElement('li');
+    li.className = 'item empty';
+    li.textContent = 'No tasks in progress.';
+    inProgressList.appendChild(li);
+  }
+
+  if (doneList.children.length === 0) {
+    const li = document.createElement('li');
+    li.className = 'item empty';
+    li.textContent = 'No completed tasks yet.';
+    doneList.appendChild(li);
+  }
 }
 
 function certMatch(cert) {
@@ -258,6 +288,15 @@ function renderCertificates() {
         <button class="secondary" data-action="delete-cert" data-id="${cert.id}">Delete</button>
       </div>
     `;
+    certList.appendChild(li);
+  });
+
+  if (sortedCerts.length === 0) {
+    const li = document.createElement('li');
+    li.className = 'item empty';
+    li.textContent = 'No certificates found for this filter.';
+    certList.appendChild(li);
+  }
 function renderCerts() {
   certList.innerHTML = '';
   state.certs.forEach((cert) => {
@@ -380,6 +419,11 @@ seedBtn.addEventListener('click', () => {
 });
 
 resetBtn.addEventListener('click', () => {
+  if (!window.confirm('Are you sure you want to remove all teams, tasks, and certificates?')) {
+    notify('Reset cancelled.');
+    return;
+  }
+
   state = structuredClone(emptyState);
   persist();
   renderAll();

@@ -55,6 +55,12 @@ body {
   opacity: 0.9;
 }
 
+.topbar-tip {
+  display: inline-block;
+  margin-top: 0.4rem;
+  opacity: 0.85;
+}
+
 .toolbar {
   display: flex;
   gap: 0.5rem;
@@ -144,6 +150,18 @@ body {
   display: grid;
   gap: 0.5rem;
   margin-top: 0.75rem;
+}
+
+.section-help {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+label {
+  font-size: 0.85rem;
+  color: #334155;
+  font-weight: 600;
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -235,6 +253,12 @@ button.danger {
 
 .item-controls .secondary {
   background: #334155;
+}
+
+.item.empty {
+  color: var(--muted);
+  background: #ffffff;
+  border-style: dashed;
 }
 
 .kanban {
