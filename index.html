@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevLaunch Teams MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>DevLaunch Teams</h1>
+        <p>Career accelerator workspace for junior Unity and Android developers.</p>
+      </div>
+      <div class="toolbar">
+        <button id="seed-btn" type="button">Load Demo Data</button>
+        <button id="reset-btn" type="button" class="danger">Reset Data</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="stats" aria-label="MVP stats">
+        <article class="metric"><h2 id="teams-count">0</h2><p>Teams</p></article>
+        <article class="metric"><h2 id="tasks-count">0</h2><p>Tasks</p></article>
+        <article class="metric"><h2 id="done-count">0</h2><p>Completed</p></article>
+        <article class="metric"><h2 id="certs-count">0</h2><p>Certificates</p></article>
+      </section>
+
+      <section class="card features-card" aria-label="Feature checklist">
+        <h3>Included in this MVP</h3>
+        <ul class="feature-list">
+          <li>Cohort/team creation with track selection (Unity/Android) and team-size validation.</li>
+          <li>Task management with a kanban flow: To Do → In Progress → Done.</li>
+          <li>Task status filter and delete actions.</li>
+          <li>Certificate issuance with track filter and delete actions.</li>
+          <li>Automatic sorting of teams, tasks, and certificates for cleaner page organization.</li>
+          <li>KPI metrics cards (teams, tasks, completed tasks, certificates).</li>
+          <li>Demo data loader and one-click reset.</li>
+          <li>User-facing status messages for successful and invalid actions.</li>
+        </ul>
+      </section>
+
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+
+      <section class="layout">
+        <article class="card">
+          <h3>Cohorts & Teams</h3>
+          <form id="team-form" class="stack">
+            <input id="cohort" placeholder="Cohort name (Spring 2026)" required />
+            <input id="team" placeholder="Team name" required />
+            <input id="members" placeholder="Members (comma separated, max 5)" required />
+            <select id="team-track" required>
+              <option value="">Select track</option>
+              <option value="Unity">Unity</option>
+              <option value="Android">Android</option>
+            </select>
+            <button type="submit">Add Team</button>
+          </form>
+          <ul id="team-list" class="list"></ul>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Projects & Tasks</h3>
+            <select id="task-filter-status">
+              <option value="all">All statuses</option>
+              <option value="todo">To Do</option>
+              <option value="in-progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <form id="task-form" class="stack">
+            <input id="project" placeholder="Project name" required />
+            <input id="task" placeholder="Task title" required />
+            <select id="difficulty" required>
+              <option value="C">Level C (Foundational)</option>
+              <option value="B">Level B (Intermediate)</option>
+              <option value="A">Level A (Advanced)</option>
+            </select>
+            <input id="assignee" placeholder="Assignee name" required />
+            <button type="submit">Create Task</button>
+          </form>
+
+          <div class="kanban">
+            <section>
+              <h4>To Do</h4>
+              <ul id="todo" class="list"></ul>
+            </section>
+            <section>
+              <h4>In Progress</h4>
+              <ul id="in-progress" class="list"></ul>
+            </section>
+            <section>
+              <h4>Done</h4>
+              <ul id="done" class="list"></ul>
+            </section>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Certificates</h3>
+            <select id="cert-filter-track">
+              <option value="all">All tracks</option>
+              <option value="Unity">Unity</option>
+              <option value="Android">Android</option>
+            </select>
+          </div>
+          <form id="cert-form" class="stack">
+            <input id="cert-name" placeholder="Developer name" required />
+            <input id="cert-track" placeholder="Track (Unity/Android)" required />
+            <input id="cert-partner" placeholder="Company partner" required />
+            <button type="submit">Issue Certificate</button>
+          </form>
+          <ul id="cert-list" class="list"></ul>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <small>Data is stored in localStorage for MVP validation.</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
