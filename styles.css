@@ -6,6 +6,12 @@
   --brand: #1d4ed8;
   --danger: #be123c;
   --line: #dbe3ef;
+  color-scheme: light;
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --text: #1f2937;
+  --muted: #6b7280;
 }
 
 * {
@@ -31,6 +37,16 @@ body {
 
 .topbar h1,
 .topbar p {
+  color: var(--text);
+}
+
+.topbar {
+  background: linear-gradient(90deg, #1d4ed8, #2563eb);
+  color: white;
+  padding: 1.25rem 1rem;
+}
+
+.topbar h1 {
   margin: 0;
 }
 
@@ -90,6 +106,23 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   align-items: start;
+.layout {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 0.25rem 0 0;
+  opacity: 0.92;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .card {
@@ -111,6 +144,15 @@ body {
   display: grid;
   gap: 0.5rem;
   margin-top: 0.75rem;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 input,
@@ -126,6 +168,16 @@ button {
   border: none;
   background: var(--brand);
   color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.95rem;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
   cursor: pointer;
 }
 
@@ -142,6 +194,7 @@ button.danger {
   margin: 0.75rem 0 0;
   color: #0b7a35;
   font-weight: 600;
+  opacity: 0.92;
 }
 
 .list {
@@ -149,12 +202,16 @@ button.danger {
   margin: 0.75rem 0 0;
   padding: 0;
   display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
 .item {
   border: 1px solid var(--line);
   background: #f8fbff;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 0.6rem;
 }
@@ -191,6 +248,13 @@ button.danger {
   margin: 0;
 }
 
+.kanban {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
 footer {
   text-align: center;
   padding: 1rem;
@@ -213,5 +277,13 @@ footer {
   .topbar {
     flex-direction: column;
     align-items: flex-start;
+  }
+  color: var(--muted);
+  padding: 1rem;
+}
+
+@media (max-width: 960px) {
+  .kanban {
+    grid-template-columns: 1fr;
   }
 }
