@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevLaunch Teams MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>DevLaunch Teams</h1>
+        <p>Career accelerator workspace for junior Unity and Android developers.</p>
+        <small class="topbar-tip">Tip: Use "Load Demo Data" to explore the workflow instantly.</small>
+      </div>
+      <div class="toolbar">
+        <button id="seed-btn" type="button">Load Demo Data</button>
+        <button id="reset-btn" type="button" class="danger">Reset Data</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="stats" aria-label="MVP stats">
+        <article class="metric"><h2 id="teams-count">0</h2><p>Teams</p></article>
+        <article class="metric"><h2 id="tasks-count">0</h2><p>Tasks</p></article>
+        <article class="metric"><h2 id="done-count">0</h2><p>Completed</p></article>
+        <article class="metric"><h2 id="certs-count">0</h2><p>Certificates</p></article>
+      </section>
+
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+
+      <section class="layout">
+        <article class="card">
+          <h3>Cohorts & Teams</h3>
+          <p class="section-help">Create small teams and assign each to a learning track.</p>
+          <form id="team-form" class="stack">
+            <label for="cohort">Cohort name</label>
+            <input id="cohort" placeholder="Spring 2026" autocomplete="off" required />
+            <label for="team">Team name</label>
+            <input id="team" placeholder="Rocket Pixels" autocomplete="off" required />
+            <label for="members">Members (comma separated, max 5)</label>
+            <input id="members" placeholder="Aylin, David, Mina" autocomplete="off" required />
+            <label for="team-track">Track</label>
+            <select id="team-track" required>
+              <option value="">Select track</option>
+              <option value="Unity">Unity</option>
+              <option value="Android">Android</option>
+            </select>
+            <button type="submit">Add Team</button>
+          </form>
+          <ul id="team-list" class="list"></ul>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Projects & Tasks</h3>
+            <select id="task-filter-status">
+              <option value="all">All statuses</option>
+              <option value="todo">To Do</option>
+              <option value="in-progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <p class="section-help">Track each task from backlog to completion.</p>
+          <form id="task-form" class="stack">
+            <label for="project">Project name</label>
+            <input id="project" placeholder="Space Miner" autocomplete="off" required />
+            <label for="task">Task title</label>
+            <input id="task" placeholder="Implement player movement controller" autocomplete="off" required />
+            <label for="difficulty">Difficulty level</label>
+            <select id="difficulty" required>
+              <option value="C">Level C (Foundational)</option>
+              <option value="B">Level B (Intermediate)</option>
+              <option value="A">Level A (Advanced)</option>
+            </select>
+            <label for="assignee">Assignee</label>
+            <input id="assignee" placeholder="Aylin" autocomplete="off" required />
+            <button type="submit">Create Task</button>
+          </form>
+
+          <div class="kanban">
+            <section>
+              <h4>To Do</h4>
+              <ul id="todo" class="list"></ul>
+            </section>
+            <section>
+              <h4>In Progress</h4>
+              <ul id="in-progress" class="list"></ul>
+            </section>
+            <section>
+              <h4>Done</h4>
+              <ul id="done" class="list"></ul>
+            </section>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3>Certificates</h3>
+            <select id="cert-filter-track">
+              <option value="all">All tracks</option>
+              <option value="Unity">Unity</option>
+              <option value="Android">Android</option>
+            </select>
+          </div>
+          <p class="section-help">Issue completion certificates for job-ready participants.</p>
+          <form id="cert-form" class="stack">
+            <label for="cert-name">Developer name</label>
+            <input id="cert-name" placeholder="Mina" autocomplete="off" required />
+            <label for="cert-track">Track</label>
+            <select id="cert-track" required>
+              <option value="">Select track</option>
+              <option value="Unity">Unity</option>
+              <option value="Android">Android</option>
+            </select>
+            <label for="cert-partner">Company partner</label>
+            <input id="cert-partner" placeholder="Nova Studios" autocomplete="off" required />
+            <button type="submit">Issue Certificate</button>
+          </form>
+          <ul id="cert-list" class="list"></ul>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <small>Data is stored in localStorage for MVP validation.</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
