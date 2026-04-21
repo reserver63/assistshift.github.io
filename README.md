@@ -1,3 +1,16 @@
+# DevLaunch Teams Landing Page
+
+This repository now contains a static landing page version of DevLaunch Teams inspired by the provided React/Tailwind design draft.
+
+## Included sections
+
+- Hero section with positioning, value proposition, and CTA buttons
+- Example team panel with track/project/member/task/certificate visual
+- Problem and solution sections
+- 5-step process section
+- Level-based responsibility section (Level C/B/A)
+- Track focus and outcomes section
+- Final CTA banner
 # DevLaunch Teams MVP
 
 Improved static MVP for a junior-developer accelerator platform.
@@ -18,6 +31,10 @@ Improved static MVP for a junior-developer accelerator platform.
 
 ```bash
 cd /workspace/assistshift.github.io
+python3 -m http.server 8080
+```
+
+Open `http://localhost:8080`.
 A lightweight MVP for a junior-developer accelerator platform. It allows you to:
 
 - Create cohorts and 5-person teams.
