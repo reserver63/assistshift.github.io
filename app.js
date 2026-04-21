@@ -146,6 +146,13 @@ function updateStats() {
 
 function renderTeams() {
   teamList.innerHTML = '';
+  const sortedTeams = [...state.teams].sort((left, right) => {
+    const byCohort = left.cohort.localeCompare(right.cohort);
+    if (byCohort !== 0) return byCohort;
+    return left.name.localeCompare(right.name);
+  });
+
+  sortedTeams.forEach((team) => {
   state.teams.forEach((team) => {
     const li = document.createElement('li');
     li.className = 'item';
@@ -192,6 +199,20 @@ function renderTasks() {
   inProgressList.innerHTML = '';
   doneList.innerHTML = '';
 
+  const statusWeight = { todo: 0, 'in-progress': 1, done: 2 };
+  const sortedTasks = [...state.tasks]
+    .filter(statusMatch)
+    .sort((left, right) => {
+      const byStatus = statusWeight[left.status] - statusWeight[right.status];
+      if (byStatus !== 0) return byStatus;
+
+      const byProject = left.project.localeCompare(right.project);
+      if (byProject !== 0) return byProject;
+
+      return left.title.localeCompare(right.title);
+    });
+
+  sortedTasks.forEach((task) => {
   state.tasks.filter(statusMatch).forEach((task) => {
     const li = document.createElement('li');
     li.className = 'item';
@@ -221,6 +242,11 @@ function certMatch(cert) {
 
 function renderCertificates() {
   certList.innerHTML = '';
+  const sortedCerts = [...state.certs]
+    .filter(certMatch)
+    .sort((left, right) => left.name.localeCompare(right.name));
+
+  sortedCerts.forEach((cert) => {
   state.certs.filter(certMatch).forEach((cert) => {
     const li = document.createElement('li');
     li.className = 'item';

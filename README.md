@@ -8,6 +8,7 @@ Improved static MVP for a junior-developer accelerator platform.
 - Task management with a kanban flow: To Do → In Progress → Done.
 - Task status filter and delete actions.
 - Certificate issuance with track filter and delete actions.
+- Automatic sorting of teams, tasks, and certificates for cleaner page organization.
 - KPI metrics cards (teams, tasks, completed tasks, certificates).
 - Demo data loader and one-click reset.
 - User-facing status messages for successful and invalid actions.
