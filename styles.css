@@ -8,6 +8,11 @@
 * { box-sizing: border-box; }
 body { margin: 0; font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); }
 .container { width: min(1120px, 92vw); margin: 0 auto; }
+.top-nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(6px); background: #f8fafccc; border-bottom: 1px solid var(--line); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 62px; gap: 1rem; }
+.brand { text-decoration: none; color: var(--text); font-weight: 800; }
+.nav-links { display: flex; flex-wrap: wrap; gap: .7rem; }
+.nav-links a { text-decoration: none; color: #1e3a8a; font-weight: 600; font-size: .92rem; }
 .section { padding: 5rem 0; }
 .hero { background: #fff; border-bottom: 1px solid var(--line); padding: 5rem 0; }
 .hero-grid { display: grid; gap: 2.5rem; grid-template-columns: 1.2fr 1fr; align-items: center; }
@@ -25,6 +30,9 @@ p { color: var(--muted); line-height: 1.7; }
 .btn.secondary { border: 1px solid #cbd5e1; background: #fff; color: var(--text); }
 .btn.white { background: #fff; color: var(--blue); }
 .btn.outline { border: 1px solid #ffffff75; color: #fff; }
+.full-btn { margin-top: .8rem; text-align: center; width: 100%; }
+.flow-list { margin: .65rem 0 0; padding-left: 1.05rem; color: var(--muted); }
+.flow-list li { margin: .35rem 0; line-height: 1.5; }
 .stats-row { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; }
 .stats-row article { border: 1px solid var(--line); background: #f8fafc; border-radius: 16px; padding: .8rem; text-align: center; }
 .stats-row strong { display: block; }
@@ -65,6 +73,10 @@ p { color: var(--muted); line-height: 1.7; }
   .grid.five { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 780px) {
+  .nav-inner { min-height: 56px; }
+  .nav-links { gap: .5rem; }
+  .stats-row, .grid.two, .grid.three, .kanban-grid, .panel-grid, .grid.five { grid-template-columns: 1fr; }
+  .section, .hero { padding: 3.2rem 0; }
   .stats-row, .grid.two, .grid.three, .kanban-grid, .panel-grid, .grid.five { grid-template-columns: 1fr; }
   .section, .hero { padding: 3.2rem 0; }
   --bg: #f3f6fb;

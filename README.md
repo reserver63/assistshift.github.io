@@ -11,6 +11,8 @@ This repository now contains a static landing page version of DevLaunch Teams in
 - Level-based responsibility section (Level C/B/A)
 - Track focus and outcomes section
 - Final CTA banner
+- Sticky top navigation for fast section access
+- Clear "Nasıl Katılırım?" action section for developers, companies, and partners
 # DevLaunch Teams MVP
 
 Improved static MVP for a junior-developer accelerator platform.
