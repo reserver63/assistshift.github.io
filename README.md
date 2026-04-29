@@ -37,6 +37,10 @@ python3 -m http.server 8080
 ```
 
 Open `http://localhost:8080`.
+
+## If you still see the old MVP screen
+
+Do a hard refresh (`Ctrl+Shift+R` / `Cmd+Shift+R`) after starting the server.
 A lightweight MVP for a junior-developer accelerator platform. It allows you to:
 
 - Create cohorts and 5-person teams.
