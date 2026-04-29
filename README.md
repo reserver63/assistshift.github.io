@@ -14,6 +14,7 @@ It also includes a lightweight `app.js` admin panel for basic cohort/task/certif
 - Final CTA banner
 - Sticky top navigation for fast section access
 - Clear "Nasıl Katılırım?" action section for developers, companies, and partners
+- Hidden admin page (`/app.html`) with forms and live counters backed by `localStorage`
 - Admin panel section with forms and live counters backed by `localStorage`
 # DevLaunch Teams MVP
 
@@ -40,6 +41,11 @@ python3 -m http.server 8080
 
 Open `http://localhost:8080`.
 
+Admin panel (hidden from landing navigation): `http://localhost:8080/app.html`.
+
+## If you still see the old MVP screen
+
+Do a hard refresh (`Ctrl+Shift+R` / `Cmd+Shift+R`) after starting the server.
 ## If you still see the old MVP screen
 
 Do a hard refresh (`Ctrl+Shift+R` / `Cmd+Shift+R`) after starting the server.
