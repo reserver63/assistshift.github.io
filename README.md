@@ -1,6 +1,7 @@
 # DevLaunch Teams Landing Page
 
 This repository now contains a static landing page version of DevLaunch Teams inspired by the provided React/Tailwind design draft.
+It also includes a lightweight `app.js` admin panel for basic cohort/task/certificate operations.
 
 ## Included sections
 
@@ -13,6 +14,7 @@ This repository now contains a static landing page version of DevLaunch Teams in
 - Final CTA banner
 - Sticky top navigation for fast section access
 - Clear "Nasıl Katılırım?" action section for developers, companies, and partners
+- Admin panel section with forms and live counters backed by `localStorage`
 # DevLaunch Teams MVP
 
 Improved static MVP for a junior-developer accelerator platform.

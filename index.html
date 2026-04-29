@@ -17,6 +17,7 @@
           <a href="#how-to-join">Nasıl Katılırım?</a>
           <a href="#steps">Süreç</a>
           <a href="#tracks">Trackler</a>
+          <a href="#admin">Admin</a>
           <a href="#contact">İletişim</a>
         </nav>
       </div>
@@ -209,6 +210,64 @@
           </div>
         </div>
       </section>
+
+      <section id="admin" class="section container">
+        <p class="eyebrow">Admin Panel</p>
+        <h2>Program operasyonunu buradan yönet</h2>
+        <p class="lead">Cohort, görev ve sertifika kayıtlarını hızlıca ekleyip takip edebilirsiniz.</p>
+        <div class="admin-grid">
+          <article class="admin-card">
+            <h3>Takım Ekle</h3>
+            <form id="team-form" class="admin-form">
+              <input id="team-cohort" placeholder="Cohort (Spring 2026)" required />
+              <input id="team-name" placeholder="Takım adı" required />
+              <input id="team-members" placeholder="Üyeler (virgülle, max 5)" required />
+              <select id="team-track" required>
+                <option value="">Track seç</option>
+                <option value="Unity">Unity</option>
+                <option value="Android">Android</option>
+              </select>
+              <button class="btn primary" type="submit">Takım Kaydet</button>
+            </form>
+          </article>
+
+          <article class="admin-card">
+            <h3>Task Ekle</h3>
+            <form id="task-form" class="admin-form">
+              <input id="task-project" placeholder="Proje adı" required />
+              <input id="task-title" placeholder="Task başlığı" required />
+              <input id="task-assignee" placeholder="Assignee" required />
+              <select id="task-status" required>
+                <option value="todo">To Do</option>
+                <option value="in-progress">In Progress</option>
+                <option value="done">Done</option>
+              </select>
+              <button class="btn primary" type="submit">Task Kaydet</button>
+            </form>
+          </article>
+
+          <article class="admin-card">
+            <h3>Sertifika Ekle</h3>
+            <form id="cert-form" class="admin-form">
+              <input id="cert-name" placeholder="Geliştirici adı" required />
+              <select id="cert-track" required>
+                <option value="">Track seç</option>
+                <option value="Unity">Unity</option>
+                <option value="Android">Android</option>
+              </select>
+              <input id="cert-partner" placeholder="Şirket partner" required />
+              <button class="btn primary" type="submit">Sertifika Ver</button>
+            </form>
+          </article>
+        </div>
+        <div class="admin-stats" aria-live="polite">
+          <div><strong id="stat-teams">0</strong><span>Takım</span></div>
+          <div><strong id="stat-tasks">0</strong><span>Task</span></div>
+          <div><strong id="stat-done">0</strong><span>Tamamlanan</span></div>
+          <div><strong id="stat-certs">0</strong><span>Sertifika</span></div>
+        </div>
+      </section>
+    </main>
     </main>
 <html lang="en">
   <head>
